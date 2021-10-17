@@ -1,25 +1,25 @@
 ## 1. 线性表的结构体定义
 
-### 1.1）顺序表的结构体定义
+### 1.1 顺序表的结构体定义
 
     typedef struct Sqlist{
         int data[maxSize];
         int length;
     }Sqlist;
 
-### 1.2）考试中顺序表定义简写法
+### 1.2 考试中顺序表定义简写法
 
     int A[maxSize];
         int n;
 
-### 1.3）单链表的结构体定义
+### 1.3 单链表的结构体定义
 
     typedef struct LNode{
         int data;
         struct LNode *next;
     }LNode;
 
-### 1.4）双链表结构体定义
+### 1.4 双链表结构体定义
 
     typedef struct DLNode {
         int data;
@@ -29,13 +29,13 @@
 
 ## 2. 顺序表的基本操作
 
-### 2.1）初始化顺序表
+### 2.1 初始化顺序表
 
     void initList(Sqlist &L) {
         L.length = 0;
     }
 
-### 2.2）求指定位置元素
+### 2.2 求指定位置元素
 
     int getElem(Sqlist L, int p, int &e){
         if (p < 0 || p >= L.length) {
@@ -45,7 +45,7 @@
         return 1;
     }
 
-### 2.3）插入数据元素
+### 2.3 插入数据元素
 
     int insertElem(Sqlist &L, int p, int e) {
         if (p < 0 || p > L.length || L.length == maxSize) {
@@ -59,7 +59,7 @@
         return 1;
     }
 
-### 2.4）按元素值查找
+### 2.4 按元素值查找
 
     int findElem(Sqlist L, int e) {
         for (int i = 0; i < L.length; i++) {
@@ -70,7 +70,7 @@
         return -1;
     }
 
-### 2.5）删除数据元素
+### 2.5 删除数据元素
 
     int deleteElem(Sqlist &L, int p, int &e) {
         if (p < 0 || p >= L.length) {
@@ -83,7 +83,7 @@
         --(L.length);
         return 1;
 
-### 2.6）顺序表的元素逆置
+### 2.6 顺序表的元素逆置
 
     void reverse(Sqlist &L) {
         int i, j, temp;
@@ -95,7 +95,7 @@
         }
     }
 
-### 2.7）删除下标为 i~j 的数据元素
+### 2.7 删除下标为 i~j 的数据元素
 
     void deleteRange(Sqlist &L, int i, int j) {
         assert(0 <= i && 0 <= j && i < L.length && j < L.length);
@@ -107,7 +107,7 @@
         L.length -= delta;
     }
 
-### 2.8）Partition 操作
+### 2.8 Partition 操作
 
     void partition(Sqlist &L) {
         assert(L.length != 0);
@@ -131,14 +131,14 @@
 
 ## 3. 单链表的基本操作
 
-### 3.1）初始化单链表
+### 3.1 初始化单链表
 
     void InitLinkList(LNode *list) {
         assert(list != NULL);
         list->next = NULL;
     }
 
-### 3.2）尾插法建立单链表
+### 3.2 尾插法建立单链表
 
     void createlistR(LNode *&list, int a[], int n) {
         LNode *s, *r; // s用来指向新申请的节点，r始终指向list的终端节点
@@ -154,7 +154,7 @@
         }
         r->next = NULL;
 
-### 3.3）头插法建立单链表
+### 3.3 头插法建立单链表
 
     void createlistF(LNode *&list, int a[], int n) {
         LNode *s;  // s用来指向新申请的节点
@@ -168,7 +168,7 @@
         }
     }
 
-### 3.4）合并递增单链表
+### 3.4 合并递增单链表
 
     void mergeR(LNode *A, LNode *B, LNode *&C) {
         // 由于不能改变了A, B自己的内容，所以得设定p, q来进行操作
@@ -203,7 +203,7 @@
         }
     }
 
-### 3.5）合并递减单链表
+### 3.5 合并递减单链表
 
     void mergeF(LNode *A, LNode *B, LNode *&C) {
         LNode *p = A->next;
@@ -246,7 +246,7 @@
         }
     }
 
-### 3.6）查找元素并删除
+### 3.6 查找元素并删除
 
     int findAndDelete(LNode *list, int x) {
         // 先找到该元素
@@ -271,7 +271,7 @@
         }
     }
 
-### 3.7）对于一个递增单链表，删除其重复的元素
+### 3.7 对于一个递增单链表，删除其重复的元素
 
     void deleteDuplicate(LNode *list) {
         LNode *p, *q;  // q用来释放被删除的元素
@@ -287,7 +287,7 @@
         }
     }
 
-### 3.8）删除单链表中的最小值
+### 3.8 删除单链表中的最小值
 
     void deleteMin(LNode *list) {
         // 这题的关键是要弄清楚需要哪些指针：
@@ -306,7 +306,7 @@
         free(minp);
     }
 
-### 3.9）单链表的原地逆置
+### 3.9 单链表的原地逆置
 
     // 将L->NULL设置为空，然后将剩余的节点一一用头插法插入到L中
     void reverseList(LNode *list) {
@@ -320,7 +320,7 @@
         }
     }
 
-### 3.10）将一个数据域为整数的单链表分割为两个分别为奇数和偶数的链表
+### 3.10 将一个数据域为整数的单链表分割为两个分别为奇数和偶数的链表
 
     void split2(LNode *A, LNode *&B) {
         // p用来扫描，但是指向的是要删除节点的前驱
@@ -344,7 +344,7 @@
         }
     }
 
-### 3.11）逆序打印单链表中的节点
+### 3.11 逆序打印单链表中的节点
 
     // 逆序，入栈不就逆序了吗，所以可以考虑递归打印
     void reprintList(LNode *list) {
@@ -354,7 +354,7 @@
         }
     }
 
-### 3.12）查找链表中倒数第 k 个节点
+### 3.12 查找链表中倒数第 k 个节点
 
     int findkLast(LNode *list, int k) {
         LNode *p, *q;
@@ -375,7 +375,7 @@
 
 ## 4. 双链表的基本操作
 
-### 4.1）尾插法建立双链表
+### 4.1 尾插法建立双链表
 
     void createDListR(DLNode *&list, int a[], int n) {
         // 准备工作...
@@ -399,7 +399,7 @@
         r->next = NULL;  // 如果不加这句话，一定会出事的
     }
 
-### 4.2）查找结点的算法
+### 4.2 查找结点的算法
 
     DLNode* findNode(DLNode *list, int x) {
         DLNode *p = list->next;
@@ -412,7 +412,7 @@
         return p;
     }
 
-### 4.3）插入结点的算法
+### 4.3 插入结点的算法
 
     int insertNode(DLNode *&list, int index, int e) {
         if (index < 0) return 0;
@@ -431,7 +431,7 @@
         return 1;
     }
 
-### 4.4）删除结点的算法
+### 4.4 删除结点的算法
 
     int deleteNode(DLNode *&list, int index) {
         DLNode *p = list;
@@ -453,21 +453,21 @@
 
 ## 5. 栈和队列的结构体定义
 
-### 5.1）顺序栈的定义
+### 5.1 顺序栈的定义
 
     typedef struct SqStack{
         int data[maxSize];
         int top;
     } SqStack;
 
-### 5.2）链栈结点定义
+### 5.2 链栈结点定义
 
     typedef struct LNode{
         int data;
         struct LNode *next;
     } LNode;
 
-### 5.3）顺序队列的定义
+### 5.3 顺序队列的定义
 
     typedef struct {
         int data[maxSize];
@@ -475,16 +475,16 @@
         int rear;  // 队尾指针
     }SqQueue;
 
-### 5.4）链队定义
+### 5.4 链队定义
 
-#### （5.4.1）队结点类型定义
+#### 5.4.1 队结点类型定义
 
     typedef struct QNode {
         int data;  // 数据域
         struct QNode *next;   // 指针域
     }QNode;
 
-#### （5.4.2）链队类型定义
+#### 5.4.2 链队类型定义
 
     typedef struct {
         QNode *front;  // 队头指针
@@ -493,19 +493,19 @@
 
 ## 6. 顺序栈的基本操作
 
-### 6.1）顺序栈的初始化
+### 6.1 顺序栈的初始化
 
     void initStack(SqStack &st) {
         st.top = -1;
     }
 
-### 6.2）判断栈空
+### 6.2 判断栈空
 
     int isEmpty(SqStack st) {
         return st.top == -1;
     }
 
-### 6.3）进栈代码
+### 6.3 进栈代码
 
     int push(SqStack &st, int x) {
         if (st.top == maxSize) return 0;
@@ -513,7 +513,7 @@
         return 1;
     }
 
-### 6.4）出栈代码
+### 6.4 出栈代码
 
     int pop(SqStack &st, int &x) {
         if (st.top == -1) return 0;
@@ -521,7 +521,7 @@
         return 1;
     }
 
-### 6.5）考试中顺序栈用法的简洁写法
+### 6.5 考试中顺序栈用法的简洁写法
 
     int stack[maxSize]; int top = -1;  // 这两句话连定义带初始化都有了
     stack[++top] = x;  // 一句话实现进栈
@@ -529,20 +529,20 @@
 
 ## 7. 链栈的基本操作
 
-### 7.1）链栈的初始化
+### 7.1 链栈的初始化
 
     void initStack(LNode *&lst) {
         lst = (LNode*)malloc(sizeof(LNode));
         lst->next = NULL;  // 还是老规矩：申请新的节点后一定要为其指针域设置为空
     }
 
-### 7.2）判断栈空
+### 7.2 判断栈空
 
     int isEmpty(LNode *lst) {
         return lst->next == NULL;
     }
 
-### 7.3）进栈代码
+### 7.3 进栈代码
 
     void push(LNode *lst, int x) {
         // 步骤一：申请新的节点，存放x的值
@@ -556,7 +556,7 @@
         lst->next = p;
     }
 
-### 7.4）出栈代码
+### 7.4 出栈代码
 
     int pop(LNode *lst, int &x) {
         // 步骤一：判空
@@ -574,19 +574,19 @@
 
 ## 8. 顺序队列的基本操作
 
-### 8.1）顺序队列的初始化
+### 8.1 顺序队列的初始化
 
     void initQueue(SqQueue &qu) {
         qu.front = qu.rear = 0;  // 队首和队尾指针重合，并且指向0
     }
 
-### 8.2）判断队空
+### 8.2 判断队空
 
     int isQueueEmpty(SqQueue qu) {
         return qu.front == qu.rear;  // 只要重合，即为空队
     }
 
-### 8.3）进队算法
+### 8.3 进队算法
 
     int enQueue(SqQueue &qu, int x) {
         if ((qu.rear+1)%maxSize == qu.front) return 0;  // 队满则不能入队
@@ -595,7 +595,7 @@
         return 1;
     }
 
-### 8.4）出队算法
+### 8.4 出队算法
 
     int deQueue(SqQueue &qu, int &x) {
         if (qu.front == qu.rear)  return 0;  // 若队空，则不能删除
@@ -606,20 +606,20 @@
 
 ## 9. 链队的基本操作
 
-### 9.1）链队的初始化
+### 9.1 链队的初始化
 
     void initQueue(LiQueue *&lqu) {
         lqu = (LiQueue*)malloc(sizeof(LiQueue));
         lqu->front = lqu->rear = nullptr;
     }
 
-### 9.2）判断队空算法
+### 9.2 判断队空算法
 
     int isQueueEmpty(LiQueue *lqu) {
         return (lqu->rear == nullptr || lqu->front == nullptr);  // 注意有两个
     }
 
-### 9.3）入队算法
+### 9.3 入队算法
 
     void enQueue(LiQueue *lqu, int x) {
         QNode *p;
@@ -634,7 +634,7 @@
         }
     }
 
-### 9.4）出队算法
+### 9.4 出队算法
 
     int deQueue(LiQueue *lqu, int &x) {
         QNode *p;
@@ -655,14 +655,14 @@
 
 ## 10. 串的结构体定义
 
-### 10.1）定长顺序存储表示
+### 10.1 定长顺序存储表示
 
     typedef struct {
         char str[maxSize+1];  // 多出一个'\0'作为结束标记
         int length;
     }Str;
 
-### 10.2）变长分配存储表示
+### 10.2 变长分配存储表示
 
     typedef struct {
         char *ch;  // 指向动态分配存储区首地址的字符指针
@@ -671,7 +671,7 @@
 
 ## 11. 串的基本操作
 
-### 11.1）赋值操作
+### 11.1 赋值操作
 
     int strassign(Str& str, char* ch) {
         if (str.ch) {
@@ -701,13 +701,13 @@
         }
     }
 
-### 11.2）取串长度操作
+### 11.2 取串长度操作
 
     int strlength(Str str) {
         return str.length;
     }
 
-### 11.3）串比较操作
+### 11.3 串比较操作
 
     int strcompare(Str s1, Str s2) {
         for (int i = 0; i < s1.length && i < s2.length; ++i) {
@@ -716,7 +716,7 @@
         return s1.length - s2.length;
     }
 
-### 11.4）串连接操作
+### 11.4 串连接操作
 
     int concat(Str &str, Str str1, Str str2) {
         if (str.ch) {
@@ -739,7 +739,7 @@
         return 1;
     }
 
-### 11.5）求子串操作
+### 11.5 求子串操作
 
     int substring(Str& substr, Str str, int pos, int len) {
         if (pos<0 || pos>=str.length || len<0 || len>str.length-pos) return 0;
@@ -764,7 +764,7 @@
         }
     }
 
-### 11.6）串清空操作
+### 11.6 串清空操作
 
     int clearstring(Str& str) {
         if (str.ch) {
@@ -777,7 +777,7 @@
 
 ## 12. 串的模式匹配
 
-### 12.1）简单模式匹配算法
+### 12.1 简单模式匹配算法
 
     int index(Str str, Str substr) {
         int i = 1, j = 1, k = i;
@@ -794,11 +794,11 @@
         else return 0;
     }
 
-### 12.2）KMP 算法
+### 12.2 KMP 算法
 
 > 注：这里的代码全部都认为下标从 0 开始
 
-#### （12.2.1）求 next 数组的代码
+#### 12.2.1 求 next 数组的代码
 
     void GetNext(char* p,int next[])
     {
@@ -822,7 +822,7 @@
         }
     }
 
-#### （12.2.2）求 nextval 数组的代码
+#### 12.2.2 求 nextval 数组的代码
 
     //优化过后的next 数组求法
     void GetNextval(char* p, int next[])
@@ -852,7 +852,7 @@
         }
     }
 
-#### （12.2.3）KMP 算法
+#### 12.2.3 KMP 算法
 
     int KMP(char* s, char* p, int next[])
     {
@@ -883,7 +883,7 @@
 
 ## 13. 二叉树的结点定义
 
-### 13.1）普通二叉树的链式存储结点定义
+### 13.1 普通二叉树的链式存储结点定义
 
     typedef struct BTNode {
         char data;   // 这里默认结点data域为char类型
@@ -892,7 +892,7 @@
         struct BTNode *rchild;  // 右儿子
     }BTNode;
 
-### 13.2）线索二叉树的结点定义
+### 13.2 线索二叉树的结点定义
 
     // 线索二叉树
     typedef struct TBTNode{
@@ -902,9 +902,9 @@
         struct TBTNode *rchild;
     }TBTNode;
 
-### 13.3) 二叉树的遍历算法
+### 13.3 二叉树的遍历算法
 
-#### (13.3.1）先序遍历（递归）
+#### 13.3.1 先序遍历（递归）
 
     void preorder(BTNode *p) {
         if (p != nullptr) {  // 一定要记得判空
@@ -914,7 +914,7 @@
         }
     }
 
-#### (13.3.2）中序遍历（递归）
+#### 13.3.2 中序遍历（递归）
 
     void inorder(BTNode *p) {
         if (p != nullptr) {
@@ -924,7 +924,7 @@
         }
     }
 
-#### (13.3.3）后序遍历（递归）
+#### 13.3.3 后序遍历（递归）
 
     void postorder(BTNode *p) {
         if (p != nullptr) {
@@ -934,7 +934,7 @@
         }
     }
 
-#### (13.3.4）层序遍历
+#### 13.3.4 层序遍历
 
     void level(BTNode *p) {
         BTNode *que[maxSize];
@@ -960,7 +960,7 @@
             }
         }
 
-#### (13.3.5）先序遍历（非递归）
+#### 13.3.5 先序遍历（非递归）
 
     void preorderNonrecursion(BTNode *bt) {
         if (bt != nullptr) {
@@ -981,7 +981,7 @@
         }
     }
 
-#### (13.3.6）中序遍历（非递归）
+#### 13.3.6 中序遍历（非递归）
 
     void inorderNonrecursion(BTNode *bt) {
         BTNode *Stack[maxSize];
@@ -1003,7 +1003,7 @@
         }
     }
 
-#### (13.3.7）后序遍历（非递归）
+#### 13.3.7 后序遍历（非递归）
 
     void postorderNonrecursion(BTNode *bt) {
         if (bt != nullptr) {
@@ -1032,7 +1032,7 @@
 
 ## 14. 图的存储结构
 
-### 14.1）邻接矩阵的结点定义
+### 14.1 邻接矩阵的结点定义
 
     typedef struct {
         int no;  // 顶点编号
@@ -1045,7 +1045,7 @@
         VertexType vex[maxSize];  // 存放节点信息
     }MGraph;  // 图的邻接矩阵类型
 
-### 14.2）邻接表的结点定义
+### 14.2 邻接表的结点定义
 
     typedef struct ArcNode{
         int adjvex;  // 该边所指向的节点的位置
@@ -1065,7 +1065,7 @@
 
 ## 15. 图的遍历方式
 
-### 15.1）DFS
+### 15.1 DFS
 
     int visit[maxSize];
     void DFS(AGraph *G, int v) {
@@ -1081,7 +1081,7 @@
         }
     }
 
-### 15.2）BFS
+### 15.2 BFS
 
     void BFS(AGraph *G, int v) {
         ArcNode *p;
@@ -1108,7 +1108,7 @@
 
 ## 16. 最小（代价）生成树
 
-### 16.1）Prim 算法
+### 16.1 Prim 算法
 
     void Prim(MGraph g, int v0, int &sum) {
         int lowcost[maxSize], vset[maxSize], v;
@@ -1141,7 +1141,7 @@
         }
     }
 
-### 16.2）Kruskal 算法
+### 16.2 Kruskal 算法
 
     typedef struct {
         int a, b;  // a和b为一条边所连的两个顶点
@@ -1173,7 +1173,7 @@
 
 ## 17. 最短路径算法
 
-### 17.1）Dijkstra 算法
+### 17.1 Dijkstra 算法
 
     void Dijkstra(MGraph g, int v, int dist[], int path[]) {
         int set[maxSize];
@@ -1212,7 +1212,7 @@
         }
     }
 
-### 17.2）Floyd 算法
+### 17.2 Floyd 算法
 
     void Floyd(MGraph g, int Path[][maxSize]) {
         int i, j, k;
@@ -1239,7 +1239,7 @@
 
 ## 18. 拓扑排序
 
-### 18.1）拓扑排序中对邻接表表头结构的修改
+### 18.1 拓扑排序中对邻接表表头结构的修改
 
     typedef struct {
         char data;
@@ -1247,7 +1247,7 @@
         ArcNode *firstarc;
     }VNode;
 
-### 18.2）拓扑排序算法
+### 18.2 拓扑排序算法
 
     int TopSort(AGraph *G) {
         int i, j, n = 0;
@@ -1281,7 +1281,7 @@
 
 ## 19. 排序算法
 
-### 19.1）直接插入排序
+### 19.1 直接插入排序
 
     void InsertSort(int a[], int n) {
         int i, j;
@@ -1297,7 +1297,7 @@
         }
     }
 
-### 19.2）折半插入排序
+### 19.2 折半插入排序
 
     void BinaryInsertSort(int R[],int n) {
         int i,j,low,mid,high,temp;
@@ -1321,7 +1321,7 @@
         }
     }
 
-### 19.3）希尔排序
+### 19.3 希尔排序
 
     // 更小间隔的排序并没有破坏之前的排序后的相对性，但是排序的结果可能不一样了
     void ShellSort(int arr[], int n) {
@@ -1338,7 +1338,7 @@
         }
     }
 
-### 19.4）起泡排序
+### 19.4 起泡排序
 
     void BubbleSort(int arr[], int n) {
         int temp;
@@ -1353,9 +1353,9 @@
         }
     }
 
-### 19.5）快速排序
+### 19.5 快速排序
 
-#### （19.5.1）两路快排
+#### 19.5.1 两路快排
 
     void QuickSort(int arr[], int l, int r) {
         if (l >= r) return;
@@ -1377,7 +1377,7 @@
         QuickSort(arr, p+1, r);
     }
 
-#### （19.5.2）三路快排
+#### 19.5.2 三路快排
 
     // 三路快排(性能最好)
     template <typename T>
@@ -1405,7 +1405,7 @@
         __quickSort3Ways(arr, gt, r);
     }
 
-### 19.6）简单选择排序
+### 19.6 简单选择排序
 
     void SelectSort(int arr[], int n) {
         int temp;
@@ -1420,9 +1420,9 @@
         }
     }
 
-### 19.7）堆排序
+### 19.7 堆排序
 
-#### （19.7.1）shiftDown 操作
+#### 19.7.1 shiftDown 操作
 
     // 在原地堆排序中，元素是从数组下标0的位置开始存储的，因此i的左孩子应该为2*i+1
     template <typename T>
@@ -1438,7 +1438,7 @@
         }
     }
 
-#### （19.7.2）堆排序代码
+#### 19.7.2 堆排序代码
 
     template <typename T>
     void heapSort3(T arr[], int n) {
@@ -1453,9 +1453,9 @@
         }
     }
 
-### 19.8）归并排序
+### 19.8 归并排序
 
-#### (19.8.1) merge 操作
+#### 19.8.1 merge 操作
 
     // 将arr[l...mid]和arr[mid+1...r]进行归并
     template <typename T>
@@ -1483,7 +1483,7 @@
         }
     }
 
-#### （19.8.2）递归的归并排序算法
+#### 19.8.2 递归的归并排序算法
 
     // 递归使用归并排序，对arr[l...r]的范围进行排序
     template <typename T>
@@ -1497,7 +1497,7 @@
         }
     }
 
-#### （19.8.3）非递归的归并排序算法
+#### 19.8.3 非递归的归并排序算法
 
     // 使用循环进行自底向上的归并排序
     template <typename T>
@@ -1535,7 +1535,7 @@
 
 ## 21. 二叉排序树
 
-### 21.1）二叉排序树的结点定义
+### 21.1 二叉排序树的结点定义
 
     typedef struct BTNode {
         int key;
@@ -1543,7 +1543,7 @@
         struct BTNode *rchild;
     }BTNode;
 
-### 21.2）二叉排序树的查找算法
+### 21.2 二叉排序树的查找算法
 
     BTNode* BSTSearch(BTNode *bt, int key) {
         if (bt == nullptr) return nullptr;
@@ -1556,7 +1556,7 @@
         }
     }
 
-### 21.3）二叉排序树的插入算法
+### 21.3 二叉排序树的插入算法
 
     int BSTInsert(BTNode *&bt, int key) {  // 因为bt要改变，所以要用引用型指针
         if (bt == nullptr) {
@@ -1571,7 +1571,7 @@
         }
     }
 
-### 21.4）二叉排序树的构造算法
+### 21.4 二叉排序树的构造算法
 
     void CreateBST(BTNode *&bt, int key[], int n) {
         bt = nullptr;  // 将树清空
